@@ -15,7 +15,7 @@
     <view class="recommended-index-list m-top20">
       <view class="title-header b-f t-c f-32 col-3">新品推荐</view>
     </view>
-    <view class="index_sale ">
+    <view class="index_sale">
       <scroll-view scroll-x="true">
         <navigator hover-class="none" style="display: inline-block;" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{newest}}" wx:key="this">
           <view class="page-column">

@@ -1,0 +1,15 @@
+/* pages/telAuth/index.wxss */
+.section{
+  font-size: 35rpx;
+}
+.section .section__title{
+  padding: 20rpx 10rpx;
+}
+.section input{
+  padding: 10rpx;
+  background-color: #fff;
+  font-size: 30rpx
+}
+.btn-area{
+  margin: 30rpx 10rpx;
+}

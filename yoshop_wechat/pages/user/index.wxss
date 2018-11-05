@@ -27,6 +27,28 @@
   box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
   margin-top: -115rpx;
 }
+.header-login{
+  padding: 30rpx;
+  font-size: 32rpx;
+  line-height: 80rpx;
+}
+.identity{
+  font-size: 20rpx;
+  padding: 2rpx 5rpx;
+  border-radius: 2rpx; 
+}
+.section{
+  border-bottom: solid 1rpx #DEDEDE
+}
+.btn-area{
+  margin-top: 30rpx;
+}
+.login-tips{
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  color: #999;
+  line-height: 40rpx;
+}
 
 .user-admin {
   display: block;

@@ -38,8 +38,8 @@ class WxUser
          */
         $url = 'https://api.weixin.qq.com/sns/jscode2session';
         $result = json_decode(curl($url, [
-            'appid' => $this->appId,
-            'secret' => $this->appSecret,
+            'appid' => 'wxafb5a87569064a89',
+            'secret' => '1b72ecb7bac7b1678e6224bcc519000b',
             'grant_type' => 'authorization_code',
             'js_code' => $code
         ]), true);

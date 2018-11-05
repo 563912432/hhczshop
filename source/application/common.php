@@ -16,6 +16,12 @@ function pre($content, $is_die = true)
     $is_die && die();
 }
 
+function p($arr)
+{
+  echo "<pre/>";
+  print_r($arr);
+}
+
 /**
  * 驼峰命名转下划线命名
  * @param $str
@@ -148,4 +154,13 @@ function array_merge_multiple($array1, $array2)
         }
     }
     return $data;
+}
+
+/**
+ * 手机号格式验证
+ * @param $number
+ * @return boolean
+ */
+function checkTel($number) {
+  return preg_match("/^1[345678](\d){9}$/", $number)?true:false;
 }

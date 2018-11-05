@@ -5,6 +5,7 @@ App({
    */
   globalData: {
     user_id: null,
+    glUserInfo: null
   },
 
   api_root: '', // api地址
@@ -74,7 +75,14 @@ App({
   getUserId: function() {
     return wx.getStorageSync('user_id');
   },
-
+  
+  /**
+   * 当前用户身份
+   */
+  getIsAgent: function () {
+    return wx.getStorageSync('is_agent');
+  },
+  
   /**
    * 显示成功提示框
    */
@@ -159,7 +167,7 @@ App({
       });
     };
     // 判断是否需要验证登录
-    check_login ? App.doLogin(request) : request();
+     check_login ? App.doLogin(request) : request();
   },
 
   /**
@@ -218,6 +226,7 @@ App({
     return !!wx.getStorageSync('user_info');
   },
 
+
   /**
    * 对象转URL
    */
@@ -251,6 +260,6 @@ App({
         App.setTitle();
       });
     }
-  },
+  }
 
 });

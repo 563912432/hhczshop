@@ -1,0 +1,15 @@
+<!-- 如果手机号码已经认证【可修改】，未认证要认证手机号码 -->
+<view>
+  <view>
+    <form bindsubmit="formSubmit">
+      <view class="section">
+        <view class="section__title">手机号码</view>
+        <input type='number' name="tel" placeholder="请输入手机号码" />
+      </view>
+
+      <view class="btn-area">
+        <button type='primary' formType="submit">认证</button>
+      </view>
+    </form>
+  </view>
+</view>

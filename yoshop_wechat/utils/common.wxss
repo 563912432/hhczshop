@@ -1,6 +1,6 @@
 /* iconfont */
 @import "/utils/iconfont.wxss";
-
+@import "/utils/iconfont1.wxss";
 
 .container, input {
   font-family: PingFang-Medium,
@@ -197,8 +197,16 @@ page {
   color: #999;
 }
 
+.border-9{
+  border: solid 1px #999;
+}
+
 .col-m {
   color: #ff495e !important;
+}
+
+.border-m{
+  border: solid 1px #ff495e;
 }
 
 .col-s {
@@ -241,7 +249,9 @@ page {
 .m-top20 {
   margin-top: 25rpx;
 }
-
+.ml-15{
+  margin-left: 15rpx;
+}
 .p-bottom {
   padding-bottom: 56px;
 }

@@ -28,6 +28,7 @@ Page({
     // 执行微信登录
     wx.login({
       success: function (res) {
+        console.log(e)
         // 发送用户信息
         App._post_form('user/login'
           , {
@@ -35,12 +36,14 @@ Page({
             user_info: e.detail.rawData,
             encrypted_data: e.detail.encryptedData,
             iv: e.detail.iv,
-            signature: e.detail.signature
+            signature: e.detail.signature,
           }
           , function (result) {
             // 记录token user_id
             wx.setStorageSync('token', result.data.token);
             wx.setStorageSync('user_id', result.data.user_id);
+            wx.setStorageSync('is_agent', result.data.is_agent);
+            // wx.setStorageSync('pwd', result.data.pwd);
             // 跳转回原页面
             _this.navigateBack();
           }

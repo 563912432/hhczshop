@@ -73,6 +73,7 @@ class Wxapp extends BaseModel
         if (is_null($wxapp_id)) {
             $self = new static();
             $wxapp_id = $self::$wxapp_id;
+//            p($self);exit();
         }
         if (!$data = Cache::get('wxapp_' . $wxapp_id)) {
             $data = self::get($wxapp_id, ['serviceImage', 'phoneImage', 'navbar']);

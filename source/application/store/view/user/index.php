@@ -19,6 +19,8 @@
                                 <th>省份</th>
                                 <th>城市</th>
                                 <th>注册时间</th>
+                                <th>代理标识</th>
+                                <th>授权代理</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -27,7 +29,7 @@
                                     <td class="am-text-middle"><?= $item['user_id'] ?></td>
                                     <td class="am-text-middle">
                                         <a href="<?= $item['avatarUrl'] ?>" title="点击查看大图" target="_blank">
-                                            <img src="<?= $item['avatarUrl'] ?>" width="72" height="72" alt="">
+                                            <img src="<?= $item['avatarUrl'] ?>" width="30" height="30" alt="">
                                         </a>
                                     </td>
                                     <td class="am-text-middle"><?= $item['nickName'] ?></td>
@@ -36,6 +38,16 @@
                                     <td class="am-text-middle"><?= $item['province'] ?: '--' ?></td>
                                     <td class="am-text-middle"><?= $item['city'] ?: '--' ?></td>
                                     <td class="am-text-middle"><?= $item['create_time'] ?></td>
+                                    <td class="am-text-middle">
+                                      <?= $item['is_agent'] ? '<span class="am-badge am-badge-success">是</span>':'<span class="am-badge">否</span>' ?>
+                                    </td>
+                                    <td class="am-text-middle">
+                                      <div class="tpl-table-black-operation">
+                                        <a href="javascript:;" id="auth-btn" data-id="<?= $item['user_id'] ?>">
+                                          <i class="am-icon-user-plus"></i> 授权代理
+                                        </a>
+                                      </div>
+                                    </td>
                                 </tr>
                             <?php endforeach; else: ?>
                                 <tr>
@@ -58,7 +70,26 @@
 </div>
 <script>
     $(function () {
-
+      $('#auth-btn').on('click', function () {
+        layer.confirm('确定授权用户id为【'+ $('#auth-btn').data('id') +'】的用户为代理吗？',{icon: 0, title:'提示'}, function (index) {
+          $.ajax({
+            url: '<?= url('user/auth')?>',
+            data: {user_id: $('#auth-btn').data('id')},
+            type: 'post',
+            dataType: 'json',
+            success: function (res) {
+              if (res.code) {
+                layer.msg(res.msg, {time: 1500}, function () {
+                  location.href = res.url
+                })
+              } else {
+                layer.msg(res.msg)
+              }
+            }
+          });
+          layer.close(index)
+        })
+      })
     });
 </script>
 

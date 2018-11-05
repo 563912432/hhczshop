@@ -15,7 +15,11 @@
     "pages/address/index",
     "pages/address/create",
     "pages/address/detail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/telAuth/index",
+    "pages/spreader/index",
+    "pages/cooperation/index",
+    "pages/telAuth/changeTel"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

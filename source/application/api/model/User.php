@@ -53,12 +53,15 @@ class User extends UserModel
         $session = $this->wxlogin($post['code']);
         // 自动注册用户
         $userInfo = json_decode(htmlspecialchars_decode($post['user_info']), true);
-        $user_id = $this->register($session['openid'], $userInfo);
+//        $user_id = $this->register($session['openid'], $userInfo); // 写信息
+        $returnInfo = $this->register($session['openid'], $userInfo); // 写信息
+        $user_id = $returnInfo['user_id'];
+        $is_agent = $returnInfo['is_agent'];
         // 生成token (session3rd)
         $this->token = $this->token($session['openid']);
         // 记录缓存, 7天
         Cache::set($this->token, $session, 86400 * 7);
-        return $user_id;
+        return ['user_id' => $user_id, 'is_agent' => $is_agent];
     }
 
     /**
@@ -113,11 +116,12 @@ class User extends UserModel
             $userInfo['open_id'] = $open_id;
             $userInfo['wxapp_id'] = self::$wxapp_id;
         }
+
         $userInfo['nickName'] = preg_replace('/[\xf0-\xf7].{3}/', '', $userInfo['nickName']);
         if (!$user->allowField(true)->save($userInfo)) {
             throw new BaseException(['msg' => '用户注册失败']);
         }
-        return $user['user_id'];
+        return ['user_id' =>$user['user_id'], 'is_agent' => $user['is_agent']];
     }
 
 }
